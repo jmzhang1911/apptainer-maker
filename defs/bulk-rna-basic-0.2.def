@@ -11,10 +11,7 @@ From: condaforge/miniforge3:24.11.3-2
     scripts/bulk-rna-basic-0.2.R /mnt/run.R
 
 %post
-    mamba create -n bioverse r-tidyverse \
-        r-devtools bioconda::bioconductor-deseq2 \
-        bioconda::bioconductor-limma \
-        bioconda::bioconductor-clusterprofiler \
+    mamba create -n bioverse r-tidyverse r-devtools \
         -c conda-forge -c bioconda -y --quiet
 
     conda run --verbose -n bioverse Rscript --verbose /mnt/run.R

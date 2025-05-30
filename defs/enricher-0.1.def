@@ -13,6 +13,7 @@ From: condaforge/miniforge3:24.11.3-2
 
 %post
     mamba create -n enricher r-tidyverse \
+        bioconda::r-pheatmap bioconda::bioconductor-fgsea \
         bioconda::bioconductor-clusterprofiler \
         bioconda::bioconductor-complexheatmap \
         bioconda::bioconductor-gsva r-devtools \

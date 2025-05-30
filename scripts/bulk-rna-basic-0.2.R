@@ -1,7 +1,7 @@
 source("/mnt/utils.R")
 
-BiocManager::install("org.Hs.eg.db")
-BiocManager::install("pheatmap")
-BiocManager::install("ggplotify")
-BiocManager::install("cowplot")
-BiocManager::install("PCAtools")
+BiocManager::install(c(
+  "org.Hs.eg.db", "pheatmap", "clusterprofiler",
+  "limma", "deseq2",
+  "ggplotify", "cowplot", "PCAtools"
+))
