@@ -1,0 +1,27 @@
+BootStrap: docker-daemon
+From: condaforge/miniforge3:24.11.3-2
+
+# installed
+# - clusterprofiler gsva gsea
+# - heatmap complexheatmap GseaVis
+# - org.Hs.eg.db
+
+%files
+    scripts/utils.R /mnt/utils.R
+    scripts/enricher-0.1.R /mnt/enricher.R
+    data/raw_packages/GseaVis-master.zip /mnt/GseaVis.zip
+
+%post
+    mamba create -n enricher r-tidyverse \
+        bioconda::bioconductor-clusterprofiler \
+        bioconda::bioconductor-complexheatmap \
+        bioconda::bioconductor-gsva r-devtools \
+        -c conda-forge -c bioconda --quiet -y
+
+    conda run --verbose -n enricher Rscript --verbose /mnt/enricher.R
+    rm -rf /mnt/*
+
+%environment
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    export PATH=/opt/conda/envs/enricher/bin:$PATH

@@ -2,8 +2,11 @@ BootStrap: docker-daemon
 From: condaforge/miniforge3:24.11.3-2
 
 %files
-    /share_gpu/zhangjm/software/cellranger-7.1.0.tar.gz /opt/cellranger-7.1.0.tar.gz
-    /share_gpu/zhangjm/software/cellranger-arc-2.0.2.tar.gz /opt/cellranger-arc-2.0.2.tar.gz
+    scripts/sc-basic-install-0.1.R /mnt/sc-basic.R
+    data/raw_packages/seurat*.zip /mnt/
+    data/raw_packages/GenomeInfoDbData_1.2.13.tar.gz /mnt/GenomeInfoDbData_1.2.13.tar.gz
+    data/raw_packages/BSgenome*.gz /mnt/
+    data/raw_packages/rtracklayer-devel.zip /mnt/
 
 %post
     cp /etc/apt/sources.list /etc/apt/sources.list.bak
@@ -12,27 +15,33 @@ From: condaforge/miniforge3:24.11.3-2
     echo "deb http://mirrors.aliyun.com/ubuntu/ noble-security main restricted universe multiverse" >> /etc/apt/sources.list
 
     apt-get update -qq && apt-get install -y locales -qq
+    
     locale-gen en_US.UTF-8
     update-locale LANG=en_US.UTF-8
-
-    cd /opt/
-    tar -zxf cellranger-7.1.0.tar.gz
-    tar -zxf /opt/cellranger-arc-2.0.2.tar.gz
-    rm cellranger-*.tar.gz
 
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
     conda config --set show_channel_urls yes
-    mamba create -n velocyto "numpy<2.0" gcc_linux-64 gxx_linux-64 samtools scipy cython numba matplotlib scikit-learn h5py click python=3.8 \
-        -c conda-forge -c bioconda -y --quiet
-    conda run -n velocyto pip install pysam velocyto -i https://pypi.tuna.tsinghua.edu.cn/simple
+    
+    mamba create -n scverse r-tidyverse r-seurat scanpy r-devtools \
+        binutils zlib xz \
+        bioconda::bioconductor-rhdf5lib bioconda::bioconductor-rhdf5filters \
+        bioconda::bioconductor-rhdf5 bioconda::bioconductor-rhtslib \
+        bioconda::bioconductor-xvector conda-forge::r-rsvd \
+        tiledb tiledb::r-tiledbsoma \
+        bioconda::bioconductor-hdf5array bioconda::bioconductor-assorthead \
+        -c conda-forge -c bioconda --quiet -y
+
+    mamba create -n scvi-env scvi-tools scanpy tiledb tiledbsoma-py -c conda-forge --quiet -y
+    conda run --verbose -n scverse Rscript --verbose /mnt/sc-basic.R
+
+    rm -rf /mnt/*
 
 %environment
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
-    export PATH=/opt/cellranger-7.1.0:$PATH
-    export PATH=/opt/cellranger-arc-2.0.2:$PATH
-    export PATH=/opt/conda/envs/velocyto/bin:$PATH
+    export PATH=/opt/conda/envs/scvi-env/bin:$PATH
+    export PATH=/opt/conda/envs/scverse/bin:$PATH
 

@@ -1,0 +1,26 @@
+BootStrap: docker-daemon
+From: condaforge/miniforge3:24.11.3-2
+
+# installed
+# - clusterprofiler gsva gsea
+# - heatmap complexheatmap GseaVis
+# - org.Hs.eg.db
+
+%files
+    scripts/utils.R /mnt/utils.R
+    scripts/bulk-rna-basic-0.2.R /mnt/run.R
+
+%post
+    mamba create -n bioverse r-tidyverse \
+        r-devtools bioconda::bioconductor-deseq2 \
+        bioconda::bioconductor-limma \
+        bioconda::bioconductor-clusterprofiler \
+        -c conda-forge -c bioconda -y --quiet
+
+    conda run --verbose -n bioverse Rscript --verbose /mnt/run.R
+    rm -rf /mnt/*
+
+%environment
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    export PATH=/opt/conda/envs/bioverse/bin:$PATH
