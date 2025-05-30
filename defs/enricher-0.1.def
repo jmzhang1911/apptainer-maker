@@ -12,6 +12,7 @@ From: condaforge/miniforge3:24.11.3-2
     data/raw_packages/GseaVis-master.zip /mnt/GseaVis.zip
 
 %post
+    apt-get update
     mamba create -n enricher r-tidyverse \
         bioconda::r-pheatmap bioconda::bioconductor-fgsea \
         bioconda::bioconductor-clusterprofiler \
