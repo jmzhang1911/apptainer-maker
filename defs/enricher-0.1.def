@@ -9,12 +9,24 @@ From: condaforge/miniforge3:24.11.3-2
 %files
     scripts/utils.R /mnt/utils.R
     scripts/enricher-0.1.R /mnt/enricher.R
+    data/raw_packages/bioconductor-data-packages-20250401-hdfd78af_0.tar.gz /mnt/
     data/raw_packages/GseaVis-master.zip /mnt/GseaVis.zip
 
 %post
-    apt-get update
+    cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    echo "deb http://mirrors.aliyun.com/ubuntu/ noble main restricted universe multiverse" > /etc/apt/sources.list
+    echo "deb http://mirrors.aliyun.com/ubuntu/ noble-updates main restricted universe multiverse" >> /etc/apt/sources.list
+    echo "deb http://mirrors.aliyun.com/ubuntu/ noble-security main restricted universe multiverse" >> /etc/apt/sources.list
+
+    apt-get update -qq && apt-get install -y locales -qq
+    
+    locale-gen en_US.UTF-8
+    update-locale LANG=en_US.UTF-8
+
+    mkdir -pv /opt/conda/pkgs/
+    tar -zxf /mnt/bioconductor-data-packages-20250401-hdfd78af_0.tar.gz -C /opt/conda/pkgs/
+
     mamba create -n enricher r-tidyverse \
-        bioconda::r-pheatmap bioconda::bioconductor-fgsea \
         bioconda::bioconductor-clusterprofiler \
         bioconda::bioconductor-complexheatmap \
         bioconda::bioconductor-gsva r-devtools \

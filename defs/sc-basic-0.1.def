@@ -2,11 +2,11 @@ BootStrap: docker-daemon
 From: condaforge/miniforge3:24.11.3-2
 
 %files
+    scripts/utils.R /mnt/utils.R
     scripts/sc-basic-install-0.1.R /mnt/sc-basic.R
     data/raw_packages/seurat*.zip /mnt/
-    data/raw_packages/GenomeInfoDbData_1.2.13.tar.gz /mnt/GenomeInfoDbData_1.2.13.tar.gz
-    data/raw_packages/BSgenome*.gz /mnt/
     data/raw_packages/rtracklayer-devel.zip /mnt/
+    data/raw_packages/bioconductor-data-packages-20250401-hdfd78af_0.tar.gz /mnt/
 
 %post
     cp /etc/apt/sources.list /etc/apt/sources.list.bak
@@ -19,6 +19,9 @@ From: condaforge/miniforge3:24.11.3-2
     locale-gen en_US.UTF-8
     update-locale LANG=en_US.UTF-8
 
+    mkdir -pv /opt/conda/pkgs/
+    tar -zxf /mnt/bioconductor-data-packages-20250401-hdfd78af_0.tar.gz -C /opt/conda/pkgs
+
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
@@ -29,6 +32,9 @@ From: condaforge/miniforge3:24.11.3-2
         binutils zlib xz \
         bioconda::bioconductor-rhdf5lib bioconda::bioconductor-rhdf5filters \
         bioconda::bioconductor-rhdf5 bioconda::bioconductor-rhtslib \
+        bioconda::bioconductor-singlecellexperiment \
+        bioconda::bioconductor-rsamtools \
+        bioconda::r-signac \
         bioconda::bioconductor-xvector conda-forge::r-rsvd \
         tiledb tiledb::r-tiledbsoma \
         bioconda::bioconductor-hdf5array bioconda::bioconductor-assorthead \
