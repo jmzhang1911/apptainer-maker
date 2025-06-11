@@ -40,7 +40,7 @@ From: condaforge/miniforge3:24.11.3-2
         bioconda::bioconductor-hdf5array bioconda::bioconductor-assorthead \
         -c conda-forge -c bioconda --quiet -y
 
-    mamba create -n scvi-env scvi-tools scanpy tiledb tiledbsoma-py -c conda-forge --quiet -y
+    mamba create -n scvi-env scvi-tools scanpy tiledb tiledbsoma-py mkl -c conda-forge --quiet -y
     conda run --verbose -n scverse Rscript --verbose /mnt/sc-basic.R
 
     rm -rf /mnt/*
@@ -48,6 +48,8 @@ From: condaforge/miniforge3:24.11.3-2
 %environment
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
+    export PATH=/opt/conda/bin:$PATH
     export PATH=/opt/conda/envs/scvi-env/bin:$PATH
     export PATH=/opt/conda/envs/scverse/bin:$PATH
+    export LD_LIBRARY_PATH=/opt/conda/envs/scvi-env/lib:$LD_LIBRARY_PATH
 

@@ -3,7 +3,6 @@
 # enricher-0.1.sif
 # apptainer build  ./sifs/enricher-0.1.sif ./defs/enricher-0.1.def
 
-
 ####### sc-pp
 # cellranger cellranger-arc
 # sc-pp-0.1.sif
@@ -12,7 +11,7 @@
 ####### sc-basic
 # Seurat scvi-env Signac 
 # sc-basic-0.1.sif
-# apptainer build  ./sifs/sc-basic-0.1.sif ./defs/sc-basic-0.1.def
+apptainer build  ./sifs/sc-basic-0.1.sif ./defs/sc-basic-0.1.def
 
 ####### sc-trajectory
 # monocle2 URD
