@@ -11,7 +11,7 @@
 ####### sc-basic
 # Seurat scvi-env Signac 
 # sc-basic-0.1.sif
-apptainer build  ./sifs/sc-basic-0.1.sif ./defs/sc-basic-0.1.def
+# apptainer build  ./sifs/sc-basic-0.1.sif ./defs/sc-basic-0.1.def
 
 ####### sc-trajectory
 # monocle2 URD
@@ -27,3 +27,7 @@ apptainer build  ./sifs/sc-basic-0.1.sif ./defs/sc-basic-0.1.def
 # DESeq2 limma PCAtools
 # bulk-rna-basic-0.2.sif
 # apptainer build  ./sifs/bulk-rna-basic-0.2.sif ./defs/bulk-rna-basic-0.2.def
+
+####### iremeta-importer
+# tiledb minio
+apptainer build  ./sifs/iremeta-importer-0.1.sif ./defs/iremeta-importer-0.1.def

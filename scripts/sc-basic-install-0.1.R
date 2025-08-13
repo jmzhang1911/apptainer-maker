@@ -3,12 +3,12 @@ source("/mnt/utils.R")
 install.packages("R.utils")
 install_safely("/mnt/seurat-data-main.zip")
 install_safely("/mnt/seurat-wrappers-master.zip")
-# install_safely("/mnt/rtracklayer-devel.zip")
+install_safely("/mnt/rtracklayer-devel.zip")
 
 BiocManager::install(c(
   "BSgenome.Hsapiens.UCSC.hg38",
-  "BSgenome.Mmusculus.UCSC.mm10",
-  # "BSgenome", "batchelor"ss
+  "BSgenome.Mmusculus.UCSC.mm10"
+  # "BSgenome", "batchelor"
 ), quiet = TRUE)
 
 install.packages("harmony")
