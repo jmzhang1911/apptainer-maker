@@ -1,0 +1,6 @@
+BootStrap: localimage
+From: sifs/sc-basic-0.1.sif
+
+%post
+    mamba install -n scvi-env loompy -c conda-forge -y
+

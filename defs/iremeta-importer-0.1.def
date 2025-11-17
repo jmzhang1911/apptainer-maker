@@ -18,8 +18,8 @@ From: condaforge/miniforge3:24.11.3-2
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
     conda config --set show_channel_urls yes
 
-    mamba create -n importer anndata tiledb conda-forge::tiledbsoma-py \
-        minio pandas scipy numpy requests \
+    mamba create -n importer conda-forge::tiledb-py conda-forge::tiledbsoma-py \
+        minio requests \
         -c conda-forge -c bioconda --quiet -y
 
 %environment

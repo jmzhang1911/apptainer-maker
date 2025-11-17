@@ -2,7 +2,7 @@ options("repos" = c(CRAN = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror = "https://mirrors.westlake.edu.cn/bioconductor")
 
 if (!require("BiocManager", quietly = TRUE)) {
-  install.packages("BiocManager")
+  install.packages(c("BiocManager"))
 }
 
 install_safely <- function(pkg_path) {

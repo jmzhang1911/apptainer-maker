@@ -1,0 +1,56 @@
+BootStrap: docker-daemon
+From: condaforge/miniforge3:24.11.3-2
+
+# installed
+# - clusterprofiler gsva gsea
+# - heatmap complexheatmap GseaVis
+# - org.Hs.eg.db
+
+%files
+    scripts/utils.R /mnt/utils.R
+    scripts/enricher-0.2.R /mnt/enricher.R
+    data/raw_packages/bioconductor-data-packages-20250625-hdfd78af_0.tar.gz /mnt/
+    data/raw_packages/GseaVis-master.zip /mnt/GseaVis.zip
+
+%post
+    cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    echo "deb http://mirrors.aliyun.com/ubuntu/ noble main restricted universe multiverse" > /etc/apt/sources.list
+    echo "deb http://mirrors.aliyun.com/ubuntu/ noble-updates main restricted universe multiverse" >> /etc/apt/sources.list
+    echo "deb http://mirrors.aliyun.com/ubuntu/ noble-security main restricted universe multiverse" >> /etc/apt/sources.list
+    
+    conda config --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    conda config --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+    conda config --add default_channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda
+
+    apt-get update -qq && apt-get install -y locales -qq
+    
+    locale-gen en_US.UTF-8
+    update-locale LANG=en_US.UTF-8
+
+    mkdir -pv /opt/conda/pkgs/
+    tar -zxf /mnt/bioconductor-data-packages-20250625-hdfd78af_0.tar.gz -C /opt/conda/pkgs/
+
+    # mamba create -n enricher r-tidyverse \
+    #     r-devtools r-rcpp \
+    #     -c conda-forge -c bioconda --quiet -y
+
+    mamba create -n enricher r-tidyverse \
+        bioconda::bioconductor-clusterprofiler \
+        bioconda::bioconductor-complexheatmap \
+        bioconda::bioconductor-gsva r-devtools \
+        r-xts r-zoo r-stringdist \
+        -c conda-forge -c bioconda -y
+
+    /opt/conda/envs/enricher/bin/Rscript --verbose /mnt/enricher.R
+
+    rm -rf /mnt/*
+
+%environment
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    export OPENBLAS_NUM_THREADS=1
+    export OMP_NUM_THREADS=1
+    export PATH=/opt/conda/bin:$PATH
+    export PATH=/opt/conda/envs/enricher/bin:$PATH
