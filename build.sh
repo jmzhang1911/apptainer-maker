@@ -7,6 +7,8 @@
 # cellranger cellranger-arc
 # sc-pp-0.1.sif
 # apptainer build  ./sifs/sc-pp-0.1.sif ./defs/sc-pp-0.1.def
+# sc-pp-0.2.sif
+apptainer build  ./sifs/sc-pp-0.2.sif ./defs/sc-pp-0.2.def
 
 ####### sc-basic
 # Seurat scvi-env Signac 
@@ -22,7 +24,7 @@
 ####### bulk-rna-pp
 # hisat2 rsubread bcftools
 # bulk-rna-pp-0.2.sif
-apptainer build  ./sifs/bulk-rna-pp-0.2.sif ./defs/bulk-rna-pp-0.2.def
+# apptainer build  ./sifs/bulk-rna-pp-0.2.sif ./defs/bulk-rna-pp-0.2.def
 
 ####### bulk-rna-basic
 # DESeq2 limma PCAtools
@@ -38,3 +40,7 @@ apptainer build  ./sifs/bulk-rna-pp-0.2.sif ./defs/bulk-rna-pp-0.2.def
 
 ####### vep
 # apptainer build sifs/ensembl-vep-latest.sif docker://hub.jmzhang.click/ensemblorg/ensembl-vep:latest
+
+######## rrho
+# ComplexHeatmap paletteer jsonlite
+# apptainer build  ./sifs/rrho-0.1.sif ./defs/rrho-0.1.def

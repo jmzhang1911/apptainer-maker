@@ -2,3 +2,6 @@
 .cache/
 tests/
 BSgenome*.gz
+cellranger*.gz
+.ipynb_checkpoints/
+

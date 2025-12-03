@@ -1,0 +1,23 @@
+BootStrap: docker-daemon
+From: condaforge/miniforge3:24.11.3-2
+
+%post
+    cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    echo "deb http://mirrors.aliyun.com/ubuntu/ noble main restricted universe multiverse" > /etc/apt/sources.list
+    echo "deb http://mirrors.aliyun.com/ubuntu/ noble-updates main restricted universe multiverse" >> /etc/apt/sources.list
+    echo "deb http://mirrors.aliyun.com/ubuntu/ noble-security main restricted universe multiverse" >> /etc/apt/sources.list
+
+    apt-get update -qq && apt-get install -y locales -qq
+    
+    locale-gen en_US.UTF-8
+    update-locale LANG=en_US.UTF-8
+
+    mamba create -n rrho r-tidyverse r-base=4.4.2 \
+        bioconda::bioconductor-complexheatmap \
+        r-paletteer \
+        -c conda-forge -c bioconda --quiet -y
+
+%environment
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    export PATH=/opt/conda/envs/rrho/bin:$PATH
