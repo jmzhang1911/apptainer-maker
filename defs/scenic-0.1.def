@@ -6,11 +6,11 @@ From: condaforge/miniforge3:25.11.0-0
     scripts/scenic-0.1.R /mnt/scenic.R
 %post
     mamba create -n scenic conda-forge::r-arrow \
-        # r-tidyverse r-devtools \
-        # bioconda::bioconductor-complexheatmap bioconda::bioconductor-rcistarget \
-        # conda-forge::r-magick \
-        # r-hdf5r \
-        # -c bioconda -c conda-forge \
+        r-tidyverse r-devtools \
+        bioconda::bioconductor-complexheatmap bioconda::bioconductor-rcistarget \
+        conda-forge::r-magick \
+        r-hdf5r \
+        -c bioconda -c conda-forge \
         -y --quiet
     . /opt/conda/etc/profile.d/conda.sh
     conda activate scenic
