@@ -1,8 +1,8 @@
 source("/mnt/utils.R")
 
 BiocManager::install(c(
-    "ComplexHeatmap", "paletteer"
-))
+    "paletteer", "ggrepel"
+), update = FALSE)
 
-devtools::install_github("aertslab/SCENIC")
-devtools::install_github("aertslab/SCopeLoomR", build_vignettes = TRUE)
+devtools::install_github("aertslab/SCENIC", upgrade = "never")
+devtools::install_github("aertslab/SCopeLoomR", build_vignettes = TRUE, upgrade = "never")
