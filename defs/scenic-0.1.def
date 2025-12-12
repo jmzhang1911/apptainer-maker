@@ -1,5 +1,5 @@
 BootStrap: docker-daemon
-From: condaforge/miniforge3:24.11.3-2
+From: condaforge/miniforge3:25.11.0-0
 
 %files
     scripts/utils.R /mnt/utils.R
