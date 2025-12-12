@@ -16,7 +16,7 @@ From: condaforge/miniforge3:24.11.3-2
     
     mamba create -n scenic conda-forge::r-arrow \
         r-tidyverse r-devtools \
-        r-complexheatmap bioconda::bioconductor-rcistarget \
+        bioconda::bioconductor-complexheatmap bioconda::bioconductor-rcistarget \
         conda-forge::r-magick \
         -c bioconda -c conda-forge \
         -y --quiet
