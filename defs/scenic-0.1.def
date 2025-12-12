@@ -19,7 +19,7 @@ From: condaforge/miniforge3:24.11.3-2
         r-complexheatmap bioconda::bioconductor-rcistarget \
         conda-forge::r-magick \
         -c bioconda -c conda-forge \
-        -y
+        -y --quiet
 
     /opt/conda/envs/enricher/bin/Rscript --verbose /mnt/scenic.R
 
