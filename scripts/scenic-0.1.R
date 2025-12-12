@@ -1,5 +1,8 @@
 source("/mnt/utils.R")
 
 BiocManager::install(c(
-    "SCopeLoomR", "AUCell", "SCENIC", "paletteer"
+    "ComplexHeatmap", "paletteer"
 ))
+
+devtools::install_github("aertslab/SCENIC")
+devtools::install_github("aertslab/SCopeLoomR", build_vignettes = TRUE)
