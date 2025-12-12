@@ -21,7 +21,7 @@ From: condaforge/miniforge3:25.11.0-0
         -c bioconda -c conda-forge \
         -y --quiet
 
-    /opt/conda/envs/enricher/bin/Rscript --verbose /mnt/scenic.R
+    /opt/conda/envs/scenic/bin/Rscript --verbose /mnt/scenic.R
 
 %environment
     export LANG=en_US.UTF-8
