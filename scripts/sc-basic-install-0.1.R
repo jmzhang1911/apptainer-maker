@@ -8,7 +8,6 @@ install_safely("/mnt/rtracklayer-devel.zip")
 BiocManager::install(c(
   "BSgenome.Hsapiens.UCSC.hg38",
   "BSgenome.Mmusculus.UCSC.mm10"
-  # "BSgenome", "batchelor"
 ), quiet = TRUE)
 
 install.packages("harmony")
