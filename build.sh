@@ -8,7 +8,7 @@
 # sc-pp-0.1.sif
 # apptainer build  ./sifs/sc-pp-0.1.sif ./defs/sc-pp-0.1.def
 # sc-pp-0.2.sif
-apptainer build  ./sifs/sc-pp-0.2.sif ./defs/sc-pp-0.2.def
+# apptainer build  ./sifs/sc-pp-0.2.sif ./defs/sc-pp-0.2.def
 
 ####### sc-basic
 # Seurat scvi-env Signac 
@@ -36,7 +36,7 @@ apptainer build  ./sifs/sc-pp-0.2.sif ./defs/sc-pp-0.2.def
 # apptainer build  ./sifs/iremeta-importer-0.1.sif ./defs/iremeta-importer-0.1.def
 
 ####### pySCENIC
-# apptainer build sifs/pyscenic-0.12.1.sif docker://172.16.3.223:5000/aertslab/pyscenic:0.12.1
+apptainer build sifs/pyscenic-0.12.1.sif ./defs/pyscenic-0.12.1.def
 # apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
 ####### vep
 # apptainer build sifs/ensembl-vep-latest.sif docker://hub.jmzhang.click/ensemblorg/ensembl-vep:latest

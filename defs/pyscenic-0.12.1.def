@@ -1,0 +1,6 @@
+BootStrap: docker-daemon
+From: aertslab/pyscenic:0.12.1
+
+%post
+    pip install ipykernel "tornado<6.2" -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip check
