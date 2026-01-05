@@ -36,8 +36,8 @@
 # apptainer build  ./sifs/iremeta-importer-0.1.sif ./defs/iremeta-importer-0.1.def
 
 ####### pySCENIC
-apptainer build sifs/pyscenic-0.12.1.sif ./defs/pyscenic-0.12.1.def
-# apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
+# apptainer build sifs/pyscenic-0.12.1.sif ./defs/pyscenic-0.12.1.def
+apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
 ####### vep
 # apptainer build sifs/ensembl-vep-latest.sif docker://hub.jmzhang.click/ensemblorg/ensembl-vep:latest
 
