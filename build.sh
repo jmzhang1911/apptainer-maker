@@ -25,6 +25,7 @@
 # hisat2 rsubread bcftools
 # bulk-rna-pp-0.2.sif
 # apptainer build  ./sifs/bulk-rna-pp-0.2.sif ./defs/bulk-rna-pp-0.2.def
+apptainer build  ./sifs/bulk-rna-pp-0.3.sif ./defs/bulk-rna-pp-0.3.def
 
 ####### bulk-rna-basic
 # DESeq2 limma PCAtools
@@ -37,7 +38,7 @@
 
 ####### pySCENIC
 # apptainer build sifs/pyscenic-0.12.1.sif ./defs/pyscenic-0.12.1.def
-apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
+# apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
 ####### vep
 # apptainer build sifs/ensembl-vep-latest.sif docker://hub.jmzhang.click/ensemblorg/ensembl-vep:latest
 
