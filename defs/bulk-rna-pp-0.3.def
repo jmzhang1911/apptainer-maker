@@ -19,14 +19,13 @@ From: condaforge/miniforge3:24.11.3-2
     mamba create -n base_tools gffread hisat2 samtools bcftools \
         bioconda::bioconductor-rsubread fastp fastqc picard \
         multiqc r-tidyverse bioconda::bioconductor-limma \
-        bioconda::bioconductor-edger pysam bioconda::sambamba \
+        bioconda::bioconductor-edger pysam pyyaml bioconda::sambamba \
         -c conda-forge -c bioconda --quiet -y
 
     mamba create -n qc_plugin pysam bioconda::preseq \
         -c conda-forge -c bioconda --quiet -y
 
     . /opt/conda/etc/profile.d/conda.sh
-    
     conda activate qc_plugin
     pip install RSeQC -i https://pypi.tuna.tsinghua.edu.cn/simple
 
