@@ -25,7 +25,7 @@
 # hisat2 rsubread bcftools
 # bulk-rna-pp-0.2.sif
 # apptainer build  ./sifs/bulk-rna-pp-0.2.sif ./defs/bulk-rna-pp-0.2.def
-apptainer build  ./sifs/bulk-rna-pp-0.3.sif ./defs/bulk-rna-pp-0.3.def
+# apptainer build  ./sifs/bulk-rna-pp-0.3.sif ./defs/bulk-rna-pp-0.3.def
 
 ####### bulk-rna-basic
 # DESeq2 limma PCAtools
@@ -45,3 +45,6 @@ apptainer build  ./sifs/bulk-rna-pp-0.3.sif ./defs/bulk-rna-pp-0.3.def
 ######## rrho
 # ComplexHeatmap paletteer jsonlite
 # apptainer build  ./sifs/rrho-0.1.sif ./defs/rrho-0.1.def
+
+######## scGPT-env
+apptainer build  ./sifs/scGPT-0.2.4.sif ./defs/scGPT-0.2.4.def
