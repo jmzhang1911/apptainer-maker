@@ -34,7 +34,7 @@
 
 ####### iremeta-importer
 # tiledb minio
-# apptainer build  ./sifs/iremeta-importer-0.1.sif ./defs/iremeta-importer-0.1.def
+# apptainer build  ./sifs/iremeta-importer-0.1.1.sif ./defs/iremeta-importer-0.1.1.def
 
 ####### pySCENIC
 # apptainer build sifs/pyscenic-0.12.1.sif ./defs/pyscenic-0.12.1.def
@@ -47,4 +47,7 @@
 # apptainer build  ./sifs/rrho-0.1.sif ./defs/rrho-0.1.def
 
 ######## scGPT-env
-apptainer build  ./sifs/scGPT-0.2.4.sif ./defs/scGPT-0.2.4.def
+# apptainer build  ./sifs/scGPT-0.2.4.sif ./defs/scGPT-0.2.4.def
+
+######## celloracle
+apptainer build  ./sifs/celloracle-0.18.0.sif ./defs/celloracle-0.18.0.def

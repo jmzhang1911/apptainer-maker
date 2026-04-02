@@ -1,0 +1,13 @@
+BootStrap: docker-daemon
+From: kenjikamimoto126/celloracle_ubuntu:0.18.0
+
+%post
+    . /opt/miniconda/etc/profile.d/conda.sh
+    conda activate celloracle_env
+    pip install fa2 ipywidgets ipympl -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip check
+
+%environment
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+    export PATH=/opt/miniconda/envs/celloracle_env/bin:$PATH
