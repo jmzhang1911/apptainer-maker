@@ -1,0 +1,2 @@
+BootStrap: docker-daemon
+From: jmzhang1911/scgpt:v0.2.4

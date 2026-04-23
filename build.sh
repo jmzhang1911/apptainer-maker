@@ -25,6 +25,7 @@
 # hisat2 rsubread bcftools
 # bulk-rna-pp-0.2.sif
 # apptainer build  ./sifs/bulk-rna-pp-0.2.sif ./defs/bulk-rna-pp-0.2.def
+# apptainer build  ./sifs/bulk-rna-pp-0.3.sif ./defs/bulk-rna-pp-0.3.def
 
 ####### bulk-rna-basic
 # DESeq2 limma PCAtools
@@ -33,14 +34,20 @@
 
 ####### iremeta-importer
 # tiledb minio
-# apptainer build  ./sifs/iremeta-importer-0.1.sif ./defs/iremeta-importer-0.1.def
+# apptainer build  ./sifs/iremeta-importer-0.1.1.sif ./defs/iremeta-importer-0.1.1.def
 
 ####### pySCENIC
-# apptainer build sifs/pyscenic-0.12.1.sif docker://172.16.3.223:5000/aertslab/pyscenic:0.12.1
-apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
+# apptainer build sifs/pyscenic-0.12.1.sif ./defs/pyscenic-0.12.1.def
+# apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
 ####### vep
 # apptainer build sifs/ensembl-vep-latest.sif docker://hub.jmzhang.click/ensemblorg/ensembl-vep:latest
 
 ######## rrho
 # ComplexHeatmap paletteer jsonlite
 # apptainer build  ./sifs/rrho-0.1.sif ./defs/rrho-0.1.def
+
+######## scGPT-env
+# apptainer build  ./sifs/scGPT-0.2.4.sif ./defs/scGPT-0.2.4.def
+
+######## celloracle
+apptainer build  ./sifs/celloracle-0.18.0.sif ./defs/celloracle-0.18.0.def
