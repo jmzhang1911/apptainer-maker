@@ -1,4 +1,5 @@
 *.sif
+*.bak
 .cache/
 tests/
 BSgenome*.gz
