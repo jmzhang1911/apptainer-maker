@@ -6,7 +6,7 @@ From: condaforge/miniforge3:25.11.0-0
     scripts/scenic-0.1.R /mnt/scenic.R
 %post
     mamba create -n scenic conda-forge::r-arrow \
-        r-tidyverse r-devtools \
+        r-tidyverse r-devtools r-seurat \
         bioconda::bioconductor-gsva \
         conda-forge::r-jsonlite \
         bioconda::bioconductor-complexheatmap bioconda::bioconductor-rcistarget \

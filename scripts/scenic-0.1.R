@@ -1,7 +1,7 @@
 source("/mnt/utils.R")
 
 BiocManager::install(c(
-    "paletteer", "ggrepel"
+    "paletteer", "ggrepel",'IRkernel','remotes'
 ), update = FALSE)
 
 devtools::install_github("aertslab/SCENIC", upgrade = "never")
