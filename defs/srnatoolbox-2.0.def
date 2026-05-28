@@ -1,0 +1,9 @@
+Bootstrap: docker-daemon
+From: ugrbioinfo/srnatoolbox:latest
+
+%environment
+    export PATH=/srv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+%post
+    echo 'export PATH=/srv/bin:$PATH' >> /etc/profile
+    echo 'PATH=/srv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' >> /etc/environment

@@ -38,7 +38,7 @@
 
 ####### pySCENIC
 # apptainer build sifs/pyscenic-0.12.1.sif ./defs/pyscenic-0.12.1.def
-apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
+# apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
 
 ####### vep
 # apptainer build sifs/ensembl-vep-latest.sif docker://hub.jmzhang.click/ensemblorg/ensembl-vep:latest
@@ -52,3 +52,6 @@ apptainer build ./sifs/scenic-0.1.sif ./defs/scenic-0.1.def
 
 ######## celloracle
 # apptainer build  ./sifs/celloracle-0.18.0.sif ./defs/celloracle-0.18.0.def
+
+####### srnatoolbox
+apptainer build  ./sifs/srnatoolbox-2.0.sif ./defs/srnatoolbox-2.0.def
