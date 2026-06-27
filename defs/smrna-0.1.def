@@ -1,0 +1,33 @@
+BootStrap: docker-daemon
+From: condaforge/miniforge3:25.11.0-0
+
+
+%files
+    scripts/utils.R /mnt/utils.R
+
+%post
+    mamba install -y  --quiet -c bioconda -c conda-forge \
+        python=3.10 \
+        fastqc \
+        fastp \
+        mirtrace \
+        seqkit \
+        multiqc \
+        fastx_toolkit \
+        bowtie \
+        samtools \
+        seqcluster \
+        mirtop \
+        r-base=4.3 \
+        r-tidyverse \
+        r-vroom \
+        r-data.table \
+        r-gplots \
+        r-statmod \
+        bioconductor-edger \
+        bioconductor-limma \
+        && mamba clean -a -y
+
+%environment
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8

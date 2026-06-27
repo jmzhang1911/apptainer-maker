@@ -54,4 +54,7 @@
 # apptainer build  ./sifs/celloracle-0.18.0.sif ./defs/celloracle-0.18.0.def
 
 ####### srnatoolbox
-apptainer build  ./sifs/srnatoolbox-2.0.sif ./defs/srnatoolbox-2.0.def
+# apptainer build  ./sifs/srnatoolbox-2.0.sif ./defs/srnatoolbox-2.0.def
+
+####### smrna
+apptainer build  ./sifs/smrna-0.1.sif ./defs/smrna-0.1.def
